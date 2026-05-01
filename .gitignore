@@ -11,8 +11,8 @@ env/
 .env
 
 # Logs
-logs/
-*.log
+#logs/
+#*.log
 
 # Tooling noise
 .pytest_cache/
