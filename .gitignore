@@ -1,0 +1,18 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment secrets
+.env
+
+# Logs
+logs/
+*.log
+
+# Tooling noise
+.pytest_cache/
