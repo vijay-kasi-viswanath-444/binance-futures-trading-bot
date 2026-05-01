@@ -1,4 +1,4 @@
-"""Application configuration helpers."""
+"""Logging and environment configuration helpers."""
 
 from __future__ import annotations
 
@@ -59,3 +59,4 @@ def setup_logging() -> Path:
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
     return LOG_FILE
+

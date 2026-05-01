@@ -2,6 +2,24 @@
 
 Small Python CLI app for placing `MARKET` and `LIMIT` orders on Binance Futures Testnet (USDT-M).
 
+## Project Structure
+
+```text
+trading_bot/
+  bot/
+    __init__.py
+    client.py
+    logging_config.py
+    orders.py
+    validators.py
+  __init__.py
+  cli.py
+cli.py
+main.py
+README.md
+requirements.txt
+```
+
 ## Features
 
 - Supports `BUY` and `SELL`
@@ -39,13 +57,13 @@ BINANCE_API_SECRET=your_secret_here
 Market order:
 
 ```bash
-python main.py --symbol BTCUSDT --side BUY --order-type MARKET --quantity 0.001
+python cli.py --symbol BTCUSDT --side BUY --order-type MARKET --quantity 0.001
 ```
 
 Limit order:
 
 ```bash
-python main.py --symbol BTCUSDT --side SELL --order-type LIMIT --quantity 0.001 --price 70000
+python cli.py --symbol BTCUSDT --side SELL --order-type LIMIT --quantity 0.001 --price 70000
 ```
 
 ## Output
@@ -56,6 +74,8 @@ The app prints:
 - order response details including `orderId`, `status`, `executedQty`, and `avgPrice` when available
 - a success or failure result message
 
+`main.py` is also available as a convenience entrypoint and calls the same CLI logic.
+
 ## Notes
 
 - This app sends requests only to Binance Futures Testnet.
@@ -65,10 +85,13 @@ The app prints:
 ## Suggested Submission Checklist
 
 - Confirm `python main.py --symbol BTCUSDT --side BUY --order-type MARKET --quantity 0.001` runs with your testnet credentials
-- Confirm `python main.py --symbol BTCUSDT --side SELL --order-type LIMIT --quantity 0.001 --price 70000` runs
+- Confirm `python cli.py --symbol BTCUSDT --side BUY --order-type MARKET --quantity 0.001` runs with your testnet credentials
+- Confirm `python cli.py --symbol BTCUSDT --side SELL --order-type LIMIT --quantity 0.001 --price 70000` runs
 - Open `logs/trading_bot.log` and verify requests, responses, and errors are recorded
 - Be ready to explain the structure:
-  - `trading_bot/client.py` handles Binance REST calls
-  - `trading_bot/cli.py` handles parsing, validation, and output
-  - `trading_bot/config.py` handles logging and credentials
+  - `trading_bot/bot/client.py` handles Binance REST calls
+  - `trading_bot/bot/validators.py` handles input validation
+  - `trading_bot/bot/orders.py` handles order submission and output formatting
+  - `trading_bot/bot/logging_config.py` handles logging and credentials
+  - `trading_bot/cli.py` is the application CLI layer
 - Keep your real API keys out of screenshots or shared files

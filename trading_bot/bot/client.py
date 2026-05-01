@@ -56,7 +56,12 @@ class BinanceFuturesTestnetClient:
 
         return self._signed_request("POST", "/fapi/v1/order", payload)
 
-    def _signed_request(self, method: str, path: str, params: dict[str, Any]) -> dict[str, Any]:
+    def _signed_request(
+        self,
+        method: str,
+        path: str,
+        params: dict[str, Any],
+    ) -> dict[str, Any]:
         query_string = urlencode(params)
         signature = hmac.new(
             self.api_secret,
